@@ -66,6 +66,33 @@
     <button type="submit">Envoyer</button>
   </form>
 </div>
+<script>
+  const inputs = document.querySelectorAll('.code-input');
 
+  inputs.forEach((input, index) => {
+    input.addEventListener('input', () => {
+      if (input.value.length === 1 && index < inputs.length - 1) {
+        inputs[index + 1].focus();
+      }
+    });
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Backspace' && input.value === '' && index > 0) {
+        inputs[index - 1].focus();
+      }
+    });
+
+    input.addEventListener('paste', (e) => {
+      const paste = e.clipboardData.getData('text').trim();
+      if (paste.length === inputs.length && /^\d+$/.test(paste)) {
+        e.preventDefault();
+        paste.split('').forEach((char, i) => {
+          inputs[i].value = char;
+        });
+        inputs[inputs.length - 1].focus();
+      }
+    });
+  });
+</script>
 </body>
 </html>
