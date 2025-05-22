@@ -13,6 +13,7 @@
       justify-content: center;
       height: 100vh;
       margin: 0;
+      flex-direction: column;
     }
     .login-box {
       background: #fff;
@@ -44,6 +45,20 @@
     button:hover {
       background-color: #fff200;
     }
+    .link-text {
+      margin-top: 15px;
+      font-size: 0.9em;
+    }
+    .link-text a {
+      color: #007bff;
+      text-decoration: none;
+      cursor: pointer;
+      display: block;
+      margin-top: 5px;
+    }
+    .link-text a:hover {
+      text-decoration: underline;
+    }
     .error-message {
       display: none;
       color: red;
@@ -62,8 +77,12 @@
     <input type="text" name="identifiant" placeholder="Nom d'utilisateur ou email" required>
     <input type="password" name="code" placeholder="Mot de passe" required>
     <button type="submit">Se connecter</button>
-    <button type="button" style="margin-top: 10px; background-color: #007bff; color: white;">S'inscrire</button>
   </form>
+
+  <div class="link-text">
+    <a>S’inscrire</a>
+    <a>Mot de passe oublié ?</a>
+  </div>
 
   <p id="errorMsg" class="error-message">Une erreur est survenue. Veuillez réessayer plus tard.</p>
 </div>
@@ -83,7 +102,6 @@
       }
     }).then(response => {
       if (response.ok) {
-        // Redirection dans le même onglet
         window.location.href = "dashboard.html";
       } else {
         document.getElementById("errorMsg").style.display = "block";
