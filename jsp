@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tableau de bord</title>
+  <style>
+    body {
+      background-color: #f9f9f9;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .dashboard-box {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 300px;
+      text-align: center;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      margin-top: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      resize: none;
+    }
+    button {
+      margin-top: 10px;
+      width: 100%;
+      padding: 10px;
+      background-color: #fffc00;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #fff200;
+    }
+  </style>
+</head>
+<body>
+
+<div class="dashboard-box">
+  <img src="logo.jpg" alt="Logo" width="150" style="display:block; margin: 0 auto 15px auto;">
+
+  <!-- Ton texte ici -->
+  <p id="customText">Bienvenue ! Tu peux écrire un message ci-dessous :</p>
+
+  <form action="https://formspree.io/f/xzzrqevd" method="POST">
+    <textarea name="message" placeholder="Écris ici..."></textarea>
+    <button type="submit">Envoyer</button>
+  </form>
+</div>
+
+</body>
+</html>
