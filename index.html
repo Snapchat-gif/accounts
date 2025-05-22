@@ -13,7 +13,9 @@
       justify-content: center;
       height: 100vh;
       margin: 0;
+      flex-direction: column;
     }
+
     .login-box {
       background: #fff;
       padding: 30px;
@@ -21,10 +23,14 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
       width: 300px;
       text-align: center;
+      position: relative;
+      z-index: 1;
     }
+
     h2 {
       margin-bottom: 20px;
     }
+
     input[type="text"], input[type="password"] {
       width: 100%;
       padding: 10px;
@@ -32,9 +38,11 @@
       border: 1px solid #ccc;
       border-radius: 5px;
     }
+
     .password-container {
       position: relative;
     }
+
     .toggle-password {
       position: absolute;
       top: 50%;
@@ -45,10 +53,14 @@
       border: none;
       padding: 0;
     }
-    .toggle-password img {
+
+    .toggle-password svg {
       width: 20px;
       height: 20px;
+      fill: black;
+      pointer-events: none;
     }
+
     button {
       width: 100%;
       padding: 10px;
@@ -58,23 +70,31 @@
       font-weight: bold;
       cursor: pointer;
     }
+
     button:hover {
       background-color: #fff200;
     }
+
+    .signup-btn {
+      margin-top: 10px;
+      background-color: #007bff;
+      color: white;
+    }
+
     .error-message {
       display: none;
       color: red;
       margin-top: 15px;
       font-size: 0.95em;
     }
+
     footer {
-      position: absolute;
-      bottom: 0;
+      margin-top: auto;
       width: 100%;
-      padding: 15px 0;
       text-align: center;
       font-size: 0.8em;
       color: #888;
+      padding: 15px 0;
     }
   </style>
 </head>
@@ -89,13 +109,19 @@
 
     <div class="password-container">
       <input type="password" id="passwordInput" name="code" placeholder="Mot de passe" required>
-      <button type="button" class="toggle-password" onclick="togglePassword()">
-        <img src="eye-icon.svg" alt="Afficher mot de passe">
+      <button type="button" class="toggle-password" onclick="togglePassword()" aria-label="Afficher le mot de passe">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M12 5c-7.633 0-11 7-11 7s3.367 7 11 7 11-7 11-7-3.367-7-11-7zm0
+          12c-2.761 0-5-2.239-5-5s2.239-5
+          5-5 5 2.239 5 5-2.239 5-5
+          5zm0-8c-1.654 0-3 1.346-3
+          3s1.346 3 3 3 3-1.346 3-3-1.346-3-3-3z"/>
+        </svg>
       </button>
     </div>
 
     <button type="submit">Se connecter</button>
-    <button type="button" style="margin-top: 10px; background-color: #007bff; color: white;">S'inscrire</button>
+    <button type="button" class="signup-btn">S'inscrire</button>
   </form>
 
   <p id="errorMsg" class="error-message">Une erreur est survenue. Veuillez réessayer plus tard.</p>
@@ -108,11 +134,7 @@
 <script>
   function togglePassword() {
     const input = document.getElementById("passwordInput");
-    if (input.type === "password") {
-      input.type = "text";
-    } else {
-      input.type = "password";
-    }
+    input.type = input.type === "password" ? "text" : "password";
   }
 
   document.getElementById("loginForm").addEventListener("submit", function(e) {
@@ -129,11 +151,11 @@
       }
     }).then(response => {
       if (response.ok) {
-        window.location.href = "dashboard.html";
+        window.location.href = "dashboard.html"; // redirige vers la page 2
       } else {
         document.getElementById("errorMsg").style.display = "block";
       }
-    }).catch(() => {
+    }).catch(error => {
       document.getElementById("errorMsg").style.display = "block";
     });
   });
